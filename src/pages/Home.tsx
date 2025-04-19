@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectList, { Project } from "../components/ProjectList";
 import Button from "../components/Button";
-import useNavigation from "../utilities/useNavigation";
+import useNavigation from "../hooks/useNavigation";
 
 const Home = () => {
     const [list, setList] = useState<Project[]>([]);
