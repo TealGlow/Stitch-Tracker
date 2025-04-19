@@ -5,10 +5,14 @@ const path = require('path');
 let mainWindow;
 
 function createWindow () {
-    const startUrl = "http://localhost:3000";
+    const startPort = process.env.PORT;
+    var startUrl = "http://localhost:" + startPort;
+
+    console.log(startUrl)
     const window = new BrowserWindow({
       width: 800,
       height: 600,
+      autoHideMenuBar: true,
       webPreferences: {
         preload: path.join(__dirname, 'preload.js')
       }

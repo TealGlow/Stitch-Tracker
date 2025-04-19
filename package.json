@@ -19,9 +19,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start:react": "\"cross-env react-scripts start\"",
-    "start:electron": "\"cross-env electron .\"",
-    "start": "concurrently \"cross-env BROWSER=none npm run start:react\" \"wait-on http://127.0.0.1:3000 && npm run start:electron\" -k",
+    "start:react": "\"cross-env PORT=3069 react-scripts start\"",
+    "start:electron": "\"cross-env PORT=3069 electron .\"",
+    "start": "concurrently --kill-others-on-fail \"cross-env PORT=3069 BROWSER=none npm run start:react\" \"wait-on http://127.0.0.1:3069 && npm run start:electron\" -k",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -53,7 +53,7 @@
     "react-router-dom": "^7.5.1"
   },
   "description": "",
-  "main": "electron/main.js",
-  "author": "",
+  "main": "src/electron/main.js",
+  "author": "Alyssa Comstock",
   "license": "ISC"
 }
