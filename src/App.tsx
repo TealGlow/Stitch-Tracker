@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
+import Create from "./pages/Create";
 
 const App = () => {
     return (
@@ -9,6 +10,7 @@ const App = () => {
                 <Route path="/" element={<Outlet />}>
                     <Route index element={<Home />} />
                 </Route>
+                <Route path="/create" element={<Create />} />
             </Routes>
         </BrowserRouter>
     );
