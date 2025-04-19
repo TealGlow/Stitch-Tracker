@@ -16,7 +16,7 @@ function createWindow () {
   
     window.loadURL(startUrl);
     window.show();
-    window.webContents.openDevTools({ mode: 'detach' });
+    // window.webContents.openDevTools({ mode: 'detach' });
   }
   
 
