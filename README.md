@@ -1,5 +1,5 @@
 # Stitch Tracker
-I wanted an application that let me easily track stitches and other things related to knitting and crochet.  I specifically wanted this application so that I can potentially track stats for if I want to sell my products
+I wanted an application that let me easily track stitches and other things related to knitting and crochet.  I specifically wanted this application so that I can potentially track stats for if I want to sell my products. Is this overkill? Yeah probably lol
 
 ## Features I want:
 - Row counter
