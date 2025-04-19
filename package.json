@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-app",
+  "name": "stitch-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -52,7 +52,7 @@
     "prettier": "3.5.3",
     "react-router-dom": "^7.5.1"
   },
-  "description": "",
+  "description": "application with features for tracking stitches and rows in knit and crochet",
   "main": "src/electron/main.js",
   "author": "Alyssa Comstock",
   "license": "ISC"
