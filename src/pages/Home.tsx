@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import ProjectList, { Project } from "../components/ProjectList";
 import Button from "../components/Button";
-import useNavigation from "../utilities/useNavigation";
+import AddItemModal, { ModalType, modalType } from "../components/AddItemModal";
 
 const Home = () => {
     const [list, setList] = useState<Project[]>([]);
-    const { navigateCreate } = useNavigation();
+    const [showModal, setShowModal] = useState(false);
+    const [modalMode, setModalMode] = useState<ModalType|null>();
+
+    const handleShowModal = (mode: ModalType) => {
+        setShowModal(true);
+        setModalMode(mode)
+    };
+
+    const handleHideModal = () => {
+        setShowModal(false);
+        setModalMode(null);
+    };
 
     const handleListAddItem = (item: Project) => {
         const updatedList = [...list, item];
+        handleHideModal();
         setList(updatedList);
     };
 
@@ -18,9 +30,10 @@ const Home = () => {
 
     return (
         <div>
-            <Button onClick={navigateCreate}>+</Button>
+            <Button onClick={()=>handleShowModal(modalType.NEW)}>Create</Button>
             <br />
             <ProjectList projectList={list} />
+            {showModal ? <AddItemModal mode={modalMode} onListAddItem={handleListAddItem} onCloseModal={handleHideModal} /> : null}
         </div>
     );
 };
