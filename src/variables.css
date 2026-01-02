@@ -1,8 +1,13 @@
 :root {
     font-family: "Roboto", sans-serif;
 
+    --primary-color-dark: #141b15;
     --primary-color: #2d3e30;
+    --primary-color-light: #5f8366;
+
     --secondary-color: #7e9181;
+    --secondary-color-light: #b0ccb4;
+
     --tertiary-color: #393e41;
 
     --accent-color: #6a4e61;
@@ -10,6 +15,10 @@
     --background-color: #fff;
     --font-color: #0c0c0c;
 
+    /* Specific element colors */
+    --modal-backdrop-color: #141b15ad;
+
+    /* Sizing */
     --font-size-small: 0.75rem;
     --font-size-medium: 1rem;
     --font-size-large: 1.25rem;
@@ -28,10 +37,12 @@
     --sizing-48px-rem: 3rem;
     --sizing-64px-rem: 4rem;
 
+    /* Border Radius */
     --border-radius-small: 4px;
     --border-radius-medium: 8px;
     --border-radius-large: 12px;
 
+    /* Font Weight */
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;

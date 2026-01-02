@@ -15,7 +15,7 @@ interface Props {
 
 const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
     return (
-        <Background>
+        <Backdrop>
             <Container>
                 <Header>
                     <Title>{mode === modalType.NEW ? 'Add New Project' : 'Edit Project'}</Title>
@@ -27,21 +27,27 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
 
                     <Label>Project Type</Label>
                     <input type="text"/>
+
+                    <Label>Start Date</Label>
+
+                    <Label>Start Time</Label>
+
+                    <Label>Notes</Label>
                 </Body>
             </Container>
-        </Background>
+        </Backdrop>
     );
 };
 
 export default AddItemModal;
 
-const Background = styled.div`
+const Backdrop = styled.div`
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--modal-backdrop-color);
     z-index: 999;
 `;
 
@@ -94,7 +100,7 @@ const Body = styled.div`
     flex-direction: column;
 
     color: var(--font-color);   
-    background-color: var(--background-color);
+    background-color: var(--secondary-color-light);
 
     padding: var(--sizing-16px-rem);
 `;
