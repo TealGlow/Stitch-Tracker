@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
+import TextInput from "./TextInput";
+import DateInput from "./DateInput";
 
 export type ModalType = 'Edit' | 'New';
 export const modalType = Object.freeze({
@@ -22,17 +25,16 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                     <CloseButton onClick={onCloseModal}>✖</CloseButton>
                 </Header>
                 <Body>
-                    <Label>Project Name</Label><br/>
-                    <input type="text" />
+                    <TextInput ariaLabel="Project Name Input" label="Project Name" id="name" name="name" placeholder="Name" required />
 
-                    <Label>Project Type</Label>
-                    <input type="text"/>
+                    <TextInput ariaLabel="Project Type Input" label="Project Type" id="type" name="type" placeholder="Type"/>
 
-                    <Label>Start Date</Label>
-
-                    <Label>Start Time</Label>
+                    <DateInput ariaLabel="State Date Input" label="Start Date" id="startDate" name="startDate" />
 
                     <Label>Notes</Label>
+                    <TextArea></TextArea>
+
+                    <Button onClick={console.log}>Add!</Button>
                 </Body>
             </Container>
         </Backdrop>
@@ -110,4 +112,12 @@ const Label = styled.label`
     font-weight: var(--font-weight-semibold);
 
     padding: 8px 0 4px 0;
+`;
+
+const TextArea = styled.textarea`
+    width: 99%;
+    max-width: 99%;
+    min-width: 99%;
+
+    max-height: 300px;
 `;
