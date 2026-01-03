@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../components/Button";
+import Button from "../components/form-components/Button";
 import useNavigation from "../utilities/useNavigation";
 
 const Create = () => {

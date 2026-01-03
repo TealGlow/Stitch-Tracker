@@ -7,9 +7,17 @@ interface Props {
     label?: string;
     required?: boolean;
     ariaLabel?: string;
+    tabIndex?: number;
 }
 
-const DateInput = ({ id, name, label, required, ariaLabel }: Props) => {
+const DateInput = ({
+    id,
+    name,
+    label,
+    required,
+    ariaLabel,
+    tabIndex,
+}: Props) => {
     return (
         <>
             <LabelContainer>
@@ -21,6 +29,7 @@ const DateInput = ({ id, name, label, required, ariaLabel }: Props) => {
                 name={name}
                 aria-label={ariaLabel}
                 type="date"
+                tabIndex={tabIndex}
             ></Input>
         </>
     );
@@ -32,7 +41,7 @@ const Label = styled.label`
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
 
-    padding: 8px 0 4px 0;
+    padding: var(--sizing-8px-rem) 0 var(--sizing-4px-rem) 0;
 `;
 
 const LabelContainer = styled.div`
@@ -43,14 +52,13 @@ const LabelContainer = styled.div`
 
 const Required = styled.div`
     color: var(--accent-color-error);
-    font-size: 14px;
+    font-size: var(--sizing-14px-rem);
 
     align-self: center;
 `;
 
-
 const Input = styled.input`
-    &:focus{
+    &:focus {
         outline: none;
         border-color: var(--primary-color-dark);
         border-radius: 3px;

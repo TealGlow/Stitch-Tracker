@@ -8,16 +8,32 @@ interface Props {
     required?: boolean;
     ariaLabel?: string;
     placeholder?: string;
+    tabIndex?: number;
 }
 
-const TextInput = ({ id, name, placeholder, label, required, ariaLabel }: Props) => {
+const TextInput = ({
+    id,
+    name,
+    placeholder,
+    label,
+    required,
+    ariaLabel,
+    tabIndex,
+}: Props) => {
     return (
         <>
             <LabelContainer>
                 <Label>{label}</Label>
                 {required ? <Required>*</Required> : null}
             </LabelContainer>
-            <Input type="text" placeholder={placeholder} id={id} name={name} aria-label={ariaLabel} />
+            <Input
+                type="text"
+                placeholder={placeholder}
+                id={id}
+                name={name}
+                aria-label={ariaLabel}
+                tabIndex={tabIndex}
+            />
         </>
     );
 };
@@ -28,7 +44,7 @@ const Label = styled.label`
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
 
-    padding: 8px 0 4px 0;
+    padding: var(--sizing-8px-rem) 0 var(--sizing-4px-rem) 0;
 `;
 
 const LabelContainer = styled.div`
@@ -39,13 +55,13 @@ const LabelContainer = styled.div`
 
 const Required = styled.div`
     color: var(--accent-color-error);
-    font-size: 14px;
+    font-size: var(--sizing-14px-rem);
 
     align-self: center;
 `;
 
 const Input = styled.input`
-    &:focus{
+    &:focus {
         outline: none;
         border-color: var(--primary-color-dark);
         border-radius: 3px;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProjectList, { Project } from "../components/ProjectList";
-import Button from "../components/Button";
+import Button from "../components/form-components/Button";
 import AddItemModal, { ModalType, modalType } from "../components/AddItemModal";
 
 const Home = () => {
