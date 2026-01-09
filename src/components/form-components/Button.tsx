@@ -12,15 +12,28 @@ const Button = (props: Props) => {
 
 export default Button;
 
-const Container = styled.div`
-    display:flex;
-    align-items:center;
-    justify-content:center;
+const Container = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width: 3.125rem;
+    width: 4rem;
     padding: var(--sizing-16px-rem);
     border-radius: var(--border-radius-small);
 
     background-color: var(--primary-color);
     color: var(--background-color);
+
+    margin-top: 6px;
+    outline: none;
+    border: none;
+
+    &:hover {
+        background-color: var(--primary-color-dark);
+    }
+
+    &:active {
+        border: none;
+        background-color: var(--primary-color-light);
+    }
 `;
