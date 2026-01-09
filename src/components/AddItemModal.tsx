@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./form-components/Button";
 import TextInput from "./form-components/TextInput";
 import DateInput from "./form-components/DateInput";
 import TextAreaInput from "./form-components/TextAreaInput";
+import { FormErrorState, FormState } from "./AddItemModalModel";
 
 export type ModalType = "Edit" | "New";
 export const modalType = Object.freeze({
@@ -13,11 +14,27 @@ export const modalType = Object.freeze({
 
 interface Props {
     mode?: ModalType | null;
+    state?: FormState;
     onListAddItem: (item: any) => void;
     onCloseModal?: () => void;
 }
 
 const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
+    const [formState, setFormState] = useState<FormState>(buildEmptyFormState);
+    const [formErrorState, setFormErrorState] = useState<FormErrorState>(
+        buildEmptyFormErrorState,
+    );
+
+    const handleSubmit = () => {
+        const formErrors = buildFormErrorState(formState);
+        setFormErrorState(formErrors);
+        const validation = validateForm(formErrorState);
+
+        if (!validation) {
+            console.log("submit");
+        }
+    };
+
     return (
         <Backdrop>
             <Container>
@@ -35,6 +52,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         label="Project Name"
                         id="name"
                         name="name"
+                        value={formState.name}
                         placeholder="Name"
                         tabIndex={0}
                         required
@@ -45,6 +63,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         label="Project Type"
                         id="type"
                         name="type"
+                        value={formState.type}
                         placeholder="Type"
                         tabIndex={1}
                     />
@@ -54,6 +73,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         label="Start Date"
                         id="startDate"
                         name="startDate"
+                        value={formState.startDate}
                         tabIndex={2}
                     />
 
@@ -63,6 +83,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         name="notes"
                         label="Notes"
                         maxHeight="300px"
+                        value={formState.notes}
                         tabIndex={4}
                     />
                     <Button onClick={console.log}>Add!</Button>
@@ -73,6 +94,25 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
 };
 
 export default AddItemModal;
+
+const buildEmptyFormState = (): FormState => ({
+    name: "",
+    type: "",
+    startDate: "",
+    endDate: "",
+    notes: "",
+});
+
+const buildEmptyFormErrorState = (): FormErrorState => ({
+    nameError: undefined,
+});
+
+const buildFormErrorState = (formState: FormState): FormErrorState => ({
+    nameError: formState.name ? undefined : "Name is required.",
+});
+
+const validateForm = (formErrorState: FormErrorState) =>
+    Object.values(formErrorState).some((value) => !!value);
 
 const Backdrop = styled.div`
     position: fixed;

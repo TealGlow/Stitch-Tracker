@@ -8,6 +8,7 @@ interface Props {
     required?: boolean;
     ariaLabel?: string;
     tabIndex?: number;
+    value?: string;
 }
 
 const DateInput = ({
@@ -17,6 +18,7 @@ const DateInput = ({
     required,
     ariaLabel,
     tabIndex,
+    value,
 }: Props) => {
     return (
         <>
@@ -30,7 +32,8 @@ const DateInput = ({
                 aria-label={ariaLabel}
                 type="date"
                 tabIndex={tabIndex}
-            ></Input>
+                value={value}
+            />
         </>
     );
 };

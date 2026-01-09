@@ -10,6 +10,7 @@ interface Props {
     placeholder?: string;
     maxHeight?: string;
     tabIndex?: number;
+    value?: string;
 }
 
 const TextAreaInput = ({
@@ -21,6 +22,7 @@ const TextAreaInput = ({
     placeholder,
     maxHeight,
     tabIndex,
+    value,
 }: Props) => {
     return (
         <Container>
@@ -35,6 +37,7 @@ const TextAreaInput = ({
                 placeholder={placeholder}
                 $maxHeight={maxHeight}
                 tabIndex={tabIndex}
+                value={value}
             ></TextArea>
         </Container>
     );

@@ -9,6 +9,7 @@ interface Props {
     ariaLabel?: string;
     placeholder?: string;
     tabIndex?: number;
+    value?: string;
 }
 
 const TextInput = ({
@@ -19,6 +20,7 @@ const TextInput = ({
     required,
     ariaLabel,
     tabIndex,
+    value,
 }: Props) => {
     return (
         <>
@@ -33,6 +35,7 @@ const TextInput = ({
                 name={name}
                 aria-label={ariaLabel}
                 tabIndex={tabIndex}
+                value={value}
             />
         </>
     );
