@@ -4,7 +4,11 @@ import Button from "./form-components/Button";
 import TextInput from "./form-components/TextInput";
 import DateInput from "./form-components/DateInput";
 import TextAreaInput from "./form-components/TextAreaInput";
-import { FormErrorState, FormState } from "./AddItemModalModel";
+import {
+    FormErrorState,
+    FormState,
+    HandleFieldChangeFn,
+} from "./AddItemModalModel";
 
 export type ModalType = "Edit" | "New";
 export const modalType = Object.freeze({
@@ -31,9 +35,16 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
         const validation = validateForm(formErrorState);
 
         if (!validation) {
-            console.log("submit");
+            console.log("submit", formState);
         }
     };
+
+    const handleFieldChange: HandleFieldChangeFn = (key, value) => [
+        setFormState({
+            ...formState,
+            [key]: value,
+        }),
+    ];
 
     return (
         <Backdrop>
@@ -55,6 +66,10 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         value={formState.name}
                         placeholder="Name"
                         tabIndex={0}
+                        error={formErrorState.nameError}
+                        onChange={(e) =>
+                            handleFieldChange("name", e.target.value)
+                        }
                         required
                     />
 
@@ -65,6 +80,9 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         name="type"
                         value={formState.type}
                         placeholder="Type"
+                        onChange={(e) =>
+                            handleFieldChange("type", e.target.value)
+                        }
                         tabIndex={1}
                     />
 
@@ -74,6 +92,9 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         id="startDate"
                         name="startDate"
                         value={formState.startDate}
+                        onChange={(e) =>
+                            handleFieldChange("startDate", e.target.value)
+                        }
                         tabIndex={2}
                     />
 
@@ -84,9 +105,12 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                         label="Notes"
                         maxHeight="300px"
                         value={formState.notes}
+                        onChange={(e) =>
+                            handleFieldChange("notes", e.target.value)
+                        }
                         tabIndex={4}
                     />
-                    <Button onClick={console.log}>Add!</Button>
+                    <Button onClick={handleSubmit}>Add!</Button>
                 </Body>
             </Container>
         </Backdrop>
@@ -125,7 +149,7 @@ const Backdrop = styled.div`
 `;
 
 const Container = styled.div`
-    width: 75%;
+    width: 50%;
     height: 75%;
 
     max-height: 900px;

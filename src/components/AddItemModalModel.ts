@@ -9,3 +9,5 @@ export type FormState = {
 export type FormErrorState = {
     nameError: string | undefined;
 };
+
+export type HandleFieldChangeFn = <K extends keyof FormState>(key: K, value:FormState[K]) => void;
