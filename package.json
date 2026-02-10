@@ -1,68 +1,75 @@
 {
-  "name": "stitch-tracker",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^6.1.17",
-    "wait-on": "^8.0.3",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start:react": "\"cross-env PORT=3069 react-scripts start\"",
-    "start:electron": "\"cross-env PORT=3069 electron .\"",
-    "start": "concurrently --kill-others-on-fail \"cross-env PORT=3069 BROWSER=none npm run start:react\" \"wait-on http://127.0.0.1:3069 && npm run start:electron\" -k",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/jest": "^30.0.0",
-    "concurrently": "^9.1.2",
-    "electron": "^35.2.0",
-    "electron-builder": "^26.0.12",
-    "electron-is-dev": "^3.0.1",
-    "prettier": "3.5.3",
-    "react-router-dom": "^7.5.1",
-    "user-event": "^4.0.0"
-  },
-  "compilerOptions": {
-    "types": [
-      "node",
-      "jest",
-      "@testing-library/jest-dom"
-    ]
-  },
-  "description": "application with features for tracking stitches and rows in knit and crochet",
-  "main": "src/electron/main.js",
-  "author": "Alyssa Comstock",
-  "license": "ISC"
+    "name": "stitch-tracker",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/user-event": "^14.6.1",
+        "@types/react": "^19.1.2",
+        "@types/react-dom": "^19.1.2",
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.5.0",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-scripts": "^5.0.1",
+        "styled-components": "^6.1.17",
+        "wait-on": "^8.0.3",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "start:react": "\"cross-env PORT=3069 react-scripts start\"",
+        "start:electron": "\"cross-env PORT=3069 electron .\"",
+        "start": "concurrently --kill-others-on-fail \"cross-env PORT=3069 BROWSER=none npm run start:react\" \"wait-on http://127.0.0.1:3069 && npm run start:electron\" -k",
+        "build": "react-scripts build",
+        "test": "jest",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.29.0",
+        "@babel/preset-react": "^7.28.5",
+        "@babel/preset-typescript": "^7.28.5",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.2",
+        "@types/jest": "^30.0.0",
+        "concurrently": "^9.1.2",
+        "electron": "^35.2.0",
+        "electron-builder": "^26.0.12",
+        "electron-is-dev": "^3.0.1",
+        "jest-environment-jsdom": "^27.5.1",
+        "prettier": "3.5.3",
+        "react-router-dom": "^7.5.1",
+        "user-event": "^4.0.0"
+    },
+    "compilerOptions": {
+        "types": [
+            "node",
+            "jest",
+            "@testing-library/jest-dom"
+        ]
+    },
+    "jest": {
+        "testEnvironment": "jsdom"
+    },
+    "description": "application with features for tracking stitches and rows in knit and crochet",
+    "main": "src/electron/main.js",
+    "author": "Alyssa Comstock",
+    "license": "ISC"
 }
