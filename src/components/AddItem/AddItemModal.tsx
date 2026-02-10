@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "./form-components/Button";
-import TextInput from "./form-components/TextInput";
-import DateInput from "./form-components/DateInput";
-import TextAreaInput from "./form-components/TextAreaInput";
+import Button from "../form-components/Button";
+import TextInput from "../form-components/TextInput";
+import DateInput from "../form-components/DateInput";
+import TextAreaInput from "../form-components/TextAreaInput";
 import {
     FormErrorState,
     FormState,
@@ -87,7 +87,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
                     />
 
                     <DateInput
-                        ariaLabel="State Date Input"
+                        ariaLabel="Start Date Input"
                         label="Start Date"
                         id="startDate"
                         name="startDate"

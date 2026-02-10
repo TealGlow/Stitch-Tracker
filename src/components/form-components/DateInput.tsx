@@ -25,7 +25,7 @@ const DateInput = ({
     return (
         <>
             <LabelContainer>
-                <Label>{label}</Label>
+                <Label htmlFor={id}>{label}</Label>
                 {required ? <Required>*</Required> : null}
             </LabelContainer>
             <Input

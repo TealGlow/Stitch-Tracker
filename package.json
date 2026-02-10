@@ -4,9 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "cross-env": "^7.0.3",
@@ -45,12 +43,23 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "concurrently": "^9.1.2",
     "electron": "^35.2.0",
     "electron-builder": "^26.0.12",
     "electron-is-dev": "^3.0.1",
     "prettier": "3.5.3",
-    "react-router-dom": "^7.5.1"
+    "react-router-dom": "^7.5.1",
+    "user-event": "^4.0.0"
+  },
+  "compilerOptions": {
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom"
+    ]
   },
   "description": "application with features for tracking stitches and rows in knit and crochet",
   "main": "src/electron/main.js",
