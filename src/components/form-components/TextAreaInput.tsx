@@ -11,6 +11,7 @@ interface Props {
     maxHeight?: string;
     tabIndex?: number;
     value?: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextAreaInput = ({
@@ -23,6 +24,7 @@ const TextAreaInput = ({
     maxHeight,
     tabIndex,
     value,
+    onChange
 }: Props) => {
     return (
         <Container>
@@ -38,6 +40,7 @@ const TextAreaInput = ({
                 $maxHeight={maxHeight}
                 tabIndex={tabIndex}
                 value={value}
+                onChange={onChange}
             ></TextArea>
         </Container>
     );

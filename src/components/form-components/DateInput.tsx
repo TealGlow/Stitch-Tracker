@@ -9,6 +9,7 @@ interface Props {
     ariaLabel?: string;
     tabIndex?: number;
     value?: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const DateInput = ({
@@ -19,11 +20,12 @@ const DateInput = ({
     ariaLabel,
     tabIndex,
     value,
+    onChange
 }: Props) => {
     return (
         <>
             <LabelContainer>
-                <Label>{label}</Label>
+                <Label htmlFor={id}>{label}</Label>
                 {required ? <Required>*</Required> : null}
             </LabelContainer>
             <Input
@@ -33,6 +35,7 @@ const DateInput = ({
                 type="date"
                 tabIndex={tabIndex}
                 value={value}
+                onChange={onChange}
             />
         </>
     );

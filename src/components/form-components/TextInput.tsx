@@ -9,7 +9,9 @@ interface Props {
     ariaLabel?: string;
     placeholder?: string;
     tabIndex?: number;
+    error?: string;
     value?: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextInput = ({
@@ -20,7 +22,9 @@ const TextInput = ({
     required,
     ariaLabel,
     tabIndex,
+    error,
     value,
+    onChange
 }: Props) => {
     return (
         <>
@@ -36,7 +40,9 @@ const TextInput = ({
                 aria-label={ariaLabel}
                 tabIndex={tabIndex}
                 value={value}
+                onChange={onChange}
             />
+            {error ? <Error>{error}</Error> : null}
         </>
     );
 };
@@ -69,4 +75,10 @@ const Input = styled.input`
         border-color: var(--primary-color-dark);
         border-radius: 3px;
     }
+`;
+
+const Error = styled.div`
+    font-size: var(--sizing-12px-rem);
+    color: var(--accent-color-error);
+    padding-top: var(--sizing-4px-rem);
 `;
