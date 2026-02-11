@@ -5,8 +5,8 @@ import TextInput from "../form-components/TextInput";
 import DateInput from "../form-components/DateInput";
 import TextAreaInput from "../form-components/TextAreaInput";
 import {
-    FormErrorState,
-    FormState,
+    FormErrorStateAddProject,
+    FormStateAddProject,
     HandleFieldChangeFn,
 } from "./AddItemModalModel";
 
@@ -18,14 +18,14 @@ export const modalType = Object.freeze({
 
 interface Props {
     mode?: ModalType | null;
-    state?: FormState;
-    onListAddItem: (item: any) => void;
+    state?: FormStateAddProject;
+    onListAddItem: (item: FormStateAddProject) => void;
     onCloseModal?: () => void;
 }
 
-const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
-    const [formState, setFormState] = useState<FormState>(buildEmptyFormState);
-    const [formErrorState, setFormErrorState] = useState<FormErrorState>(
+const AddItemModal = ({ mode = modalType.NEW, onCloseModal, onListAddItem }: Props) => {
+    const [formState, setFormState] = useState<FormStateAddProject>(buildEmptyFormState);
+    const [formErrorState, setFormErrorState] = useState<FormErrorStateAddProject>(
         buildEmptyFormErrorState,
     );
 
@@ -36,6 +36,7 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
 
         if (!validation) {
             console.log("submit", formState);
+            onListAddItem(formState);
         }
     };
 
@@ -119,23 +120,24 @@ const AddItemModal = ({ mode = modalType.NEW, onCloseModal }: Props) => {
 
 export default AddItemModal;
 
-const buildEmptyFormState = (): FormState => ({
+const buildEmptyFormState = (): FormStateAddProject => ({
     name: "",
     type: "",
     startDate: "",
     endDate: "",
     notes: "",
+    isFinished: false
 });
 
-const buildEmptyFormErrorState = (): FormErrorState => ({
+const buildEmptyFormErrorState = (): FormErrorStateAddProject => ({
     nameError: undefined,
 });
 
-const buildFormErrorState = (formState: FormState): FormErrorState => ({
+const buildFormErrorState = (formState: FormStateAddProject): FormErrorStateAddProject => ({
     nameError: formState.name ? undefined : "Name is required.",
 });
 
-const validateForm = (formErrorState: FormErrorState) =>
+const validateForm = (formErrorState: FormErrorStateAddProject) =>
     Object.values(formErrorState).some((value) => !!value);
 
 const Backdrop = styled.div`

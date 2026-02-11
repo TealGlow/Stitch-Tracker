@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectList, { Project } from "../components/ProjectList";
 import Button from "../components/form-components/Button";
-import AddItemModal, { ModalType, modalType } from "../components/AddItem/AddItemModal";
+import AddItemModal, { ModalType, modalType } from "../components/add-item/AddItemModal";
 
 const Home = () => {
     const [list, setList] = useState<Project[]>([]);
